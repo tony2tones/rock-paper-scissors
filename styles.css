@@ -23,6 +23,39 @@ header > h1 {
     margin: 20px auto;
     color: white;
     font-size: 46px;
+    padding: 15px 20px;
     border-radius: 4px;
     text-align: center;
+    font-family: 'Asap', sans-serif;
+    position: relative;
+}
+
+.badge {
+    background: #E2584D;
+    color: white;
+    font-size: 14px;
+    padding: 2px 10px;
+    font-family: 'Asap', sans-serif;
+}
+#user-label {
+    position: absolute;
+    top: 30px;
+    left: -28px;
+}
+
+#comp-label {
+    position: absolute;
+    top: 30px;
+    right: -30px;
+}
+.result{
+    color: white;
+    font-size: 30px;
+}
+
+.result > p {
+    text-align: center;
+    font-family: 'Asap', sans-serif;
+    font-weight: bold;
+
 }
