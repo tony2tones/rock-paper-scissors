@@ -1,8 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Asap:400,500,700');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    background: rgb(26, 40, 85);
+    background:  #24272E;
 }
 header {
     background: whitesmoke;
+    padding: 20px;
+}
+header > h1 {
+    color: #25272E;
     text-align: center;
-    padding: 10px;
+    font-family: 'Asap', sans-serif;
+}
+.scoreboard {
+    border: 3px solid white;
+    width: 200px;
+    margin: 20px auto;
+    color: white;
+    font-size: 46px;
+    border-radius: 4px;
+    text-align: center;
 }
