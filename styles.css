@@ -1,3 +1,8 @@
 body {
-    background: red;
+    background: rgb(26, 40, 85);
+}
+header {
+    background: whitesmoke;
+    text-align: center;
+    padding: 10px;
 }
