@@ -1,37 +1,43 @@
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Rock Paper scissors</title>
-        <link rel="stylesheet" href="styles.css">
-    </head>
-    <body>
-        <header>
-            <h1>Rock paper Scissors</h1>
-        </header>
-        
-        <div class=scoreboard>
-            <div id="user-label" class="badge">user</div>
-            <div id="comp-label"  class="badge">comp</div>
-            <span id="user-score">0</span>:<span id="comp-score">0</span>
-        </div>
+  <head>
+    <meta charset="utf-8" />
+    <title>Rock Paper scissors</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Rock paper Scissors</h1>
+    </header>
 
-        <div class="result">
-            <p>Paper covers Rock, you win!</p>
-        </div>
+    <div class="scoreboard">
+      <div id="user-label" class="badge">user</div>
+      <div id="comp-label" class="badge">comp</div>
+      <span id="user-score">0</span>:<span id="comp-score">0</span>
+    </div>
 
-        <div class="choices">
-            <div class="choice" id="r">
-                <img class="resize" src="assets/images/faceBeard.png" />
-            </div>
-            <div class="choice" id="p">
-                <img class="resize" src="assets/images/faceBeard.png" />
-            </div>
-            <div class="choice" id="s">
-                <img class="resize" src="assets/images/faceBeard.png" />
-            </div>
-        </div>
+    <div class="result">
+      <p>Paper covers Rock, you win!</p>
+    </div>
 
-        <p id="action-message">Make your move</p>
-    </body>
-    <script src="app.js"></script>
+    <div class="choices">
+      <div class="choice" id="r">
+        <img class="resize" src="assets/images/faceBeard.png" />
+      </div>
+      <div class="choice" id="p">
+        <img class="resize" src="assets/images/faceBeard.png" />
+      </div>
+      <div class="choice" id="s">
+        <img class="resize" src="assets/images/faceBeard.png" />
+      </div>
+    </div>
+
+    <p id="action-message">Make your move</p>
+
+    <div class="avatar">
+      <div class="avatar-face" id="face">
+        <img class="resize" src="assets/images/faceBeard.png" />
+      </div>
+    </div>
+  </body>
+  <script src="app.js"></script>
 </html>
