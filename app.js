@@ -78,4 +78,13 @@ function main() {
   });
 }
 
+function scoreUpdate(result){
+    if (result === 'user') {
+        userScore = userScore + 1;
+    }
+    else {
+        compScore = compScore + 1;
+    }
+}
+
 main();
