@@ -89,5 +89,13 @@ header > h1 {
 .avatar {
     text-align:center;
     margin: 50px;
-    
+}
+
+.hits {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color:white;
+    font-family: 'Asap', sans-serif;
+    margin-top: 20px;
 }
