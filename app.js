@@ -1,6 +1,6 @@
 let userScore = 0;
 let compScore = 0;
-let hitPoints = 10;
+let hitPoints = 5;
 
 const userScore_span = document.getElementById("user-score");
 const compScore_span = document.getElementById("comp-score");
@@ -26,41 +26,56 @@ function win(userChoice, computerChoice) {
 
 function lose(userChoice, computerChoice) {
   compScore++;
-  compScore_span.innerHTML = userScore;
   result_div.innerHTML =
-    computerChoice + " beats " + userChoice + " user wins!";
+    computerChoice + " beats " + userChoice + " user loses!";
   hitPointsUpdate();
 }
 
-function draw(userChoice, computerChoice) {
-  compScore_span.innerHTML = userScore;
+function draw() {
   result_div.innerHTML = "Its a draw, no winner. Try again.";
 }
 
+// Overlay logic
+function on() {
+  console.log("your lives are over brah");
+  document.getElementById("overlay").style.display = "block";
+}
+
+function off() {
+  document.getElementById("overlay").style.display = "none";
+}
+
 function hitPointsUpdate() {
-  hitPoints--;
-  hitpoints_div.innerHTML = hitPoints;
-  console.log("your health " + hitPoints);
+  let lives = hitPoints;
+  console.log(lives);
+  if (lives === 0) {
+    on();
+    console.log("its over");
+  } else 
+    hitPoints--;
+    hitpoints_div.innerHTML = hitPoints;
+    console.log("your health " + hitPoints);
+  
 }
 
 function game(userChoice) {
+  result_div.innerHTML = "Make your move";
   const computerChoice = getComputerChoice();
   switch (userChoice + computerChoice) {
     case "rs":
-    case "sp":
     case "pr":
+    case "sp":
       win(userChoice, computerChoice);
       break;
     case "sr":
-    case "rp":
+    case "ps":
     case "rp":
       lose(userChoice, computerChoice);
       break;
+    case "pp":
     case "rr":
     case "ss":
-    case "pp":
       draw();
-      break;
   }
 }
 
@@ -76,15 +91,6 @@ function main() {
   scissors_div.addEventListener("click", function() {
     game("s");
   });
-}
-
-function scoreUpdate(result){
-    if (result === 'user') {
-        userScore = userScore + 1;
-    }
-    else {
-        compScore = compScore + 1;
-    }
 }
 
 main();
