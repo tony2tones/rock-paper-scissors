@@ -1,8 +1,11 @@
 let userScore = 0;
 let compScore = 0;
+let hitPoints = 10;
+
 const userScore_span = document.getElementById("user-score");
 const compScore_span = document.getElementById("comp-score");
 const scoreBoard_div = document.querySelector(".score-board");
+const hitpoints_div = document.getElementById("lifeCount");
 const result_div = document.querySelector(".result > p");
 const rock_div = document.getElementById("r");
 const paper_div = document.getElementById("p");
@@ -14,21 +17,30 @@ function getComputerChoice() {
   return choices[randomNumber];
 }
 
-function win(userChoice,computerChoice) {
-    userScore ++;
-    userScore_span.innerHTML = userScore;
-    result_div.innerHTML = userChoice + " beats " + computerChoice + ' user wins!';
+function win(userChoice, computerChoice) {
+  userScore++;
+  userScore_span.innerHTML = userScore;
+  result_div.innerHTML =
+    userChoice + " beats " + computerChoice + " user wins!";
 }
 
-function lose(userChoice,computerChoice) {
-    compScore ++;
-    compScore_span.innerHTML = userScore;
-    result_div.innerHTML = computerChoice + " beats " + userChoice + ' user wins!';
+function lose(userChoice, computerChoice) {
+  compScore++;
+  compScore_span.innerHTML = userScore;
+  result_div.innerHTML =
+    computerChoice + " beats " + userChoice + " user wins!";
+  hitPointsUpdate();
 }
 
-function draw(userChoice,computerChoice) {
-    compScore_span.innerHTML = userScore;
-    result_div.innerHTML = 'Its a draw, no winner. Try again.';
+function draw(userChoice, computerChoice) {
+  compScore_span.innerHTML = userScore;
+  result_div.innerHTML = "Its a draw, no winner. Try again.";
+}
+
+function hitPointsUpdate() {
+  hitPoints--;
+  hitpoints_div.innerHTML = hitPoints;
+  console.log("your health " + hitPoints);
 }
 
 function game(userChoice) {
@@ -37,22 +49,18 @@ function game(userChoice) {
     case "rs":
     case "sp":
     case "pr":
-      console.log("player wins");
-      win(userChoice,computerChoice)
+      win(userChoice, computerChoice);
       break;
     case "sr":
     case "rp":
     case "rp":
-      console.log("player loses");
-      lose(userChoice,computerChoice)
+      lose(userChoice, computerChoice);
       break;
     case "rr":
     case "ss":
     case "pp":
-      console.log("its a Draw");
-      draw()
+      draw();
       break;
-      
   }
 }
 
