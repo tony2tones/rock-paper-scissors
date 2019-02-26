@@ -152,7 +152,7 @@ header > h1 {
   }
   #r:hover {
     content: url('assets/images/srock-attack.png');
-    transform: scale(1.5);
+    transform: scale(1.2);
   }
 
   #p {
@@ -163,7 +163,7 @@ header > h1 {
   }
   #p:hover {
     content: url('assets/images/spaper-attack.png');
-    transform: scale(1.5);
+    transform: scale(1.2);
   }
 
   #s {
@@ -174,7 +174,13 @@ header > h1 {
   }
   #s:hover {
     content: url('assets/images/scissors-close.png');
-    transform: scale(1.5);
+    transform: scale(1.2);
+  }
+
+  .no-hover {
+    width: 150px;
+    height: auto;
+    border-radius: 4px;
   }
 
   .green-glow {
@@ -188,6 +194,6 @@ header > h1 {
 }
 
 .grey-glow {
-    border: 4px solid #fc121b;
-    box-shadow: 0 0 10px #d01115;
+    border: 4px solid #464647;
+    box-shadow: 0 0 10px #25292b;
 }

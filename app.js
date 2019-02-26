@@ -25,14 +25,20 @@ function convertToWord(choice) {
 }
 
 function win(userChoice, computerChoice) {
+  userChoice_div = document.getElementById(userChoice).classList;
   userScore++;
   userScore_span.innerHTML = userScore;
   result_div.innerHTML = `${convertToWord(userChoice)} beats ${convertToWord(
     computerChoice
   )} user wins!`;
+  userChoice_div.add("green-glow");
+  setTimeout(function() {
+    userChoice_div.remove("green-glow");
+  }, 800);
 }
 
 function lose(userChoice, computerChoice) {
+  userChoice_div = document.getElementById(userChoice).classList;
   compScore++;
   compScore_span.innerHTML = compScore;
   result_div.innerHTML =
@@ -41,6 +47,10 @@ function lose(userChoice, computerChoice) {
     convertToWord(userChoice) +
     " user loses!";
   hitPointsUpdate();
+  userChoice_div.add("red-glow");
+  setTimeout(function() {
+    userChoice_div.remove("red-glow");
+  }, 800);
 }
 
 function draw() {
@@ -100,10 +110,10 @@ function main() {
   });
   rock_div.addEventListener("click", function() {
     game("r");
-    document.getElementById("user-choice").src = "assets/images/srock.png";
-    document.getElementById("user-choice").style.display = "block";
-    document.getElementById("user-choice").style.transform = "translate(200px)";
-      
+
+    // document.getElementById("user-choice").src = "assets/images/srock.png";
+    // document.getElementById("user-choice").style.display = "block";
+    // document.getElementById("user-choice").style.transform = "translate(200px)";
   });
 
   paper_div.addEventListener("click", function() {
