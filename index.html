@@ -16,7 +16,7 @@
     </div>
 
     <div class="result">
-      <p>Paper covers Rock, you win!</p>
+      <p>Make your move</p>
     </div>
 
     <div class="choices">
@@ -31,19 +31,21 @@
       </div>
     </div>
 
-    <p id="action-message">Make your move</p>
-
     <div class="avatar">
-      <div class="avatar-face" id="face">
-        <img class="resize" src="assets/images/faceBeard.png" />
+      <div id="face">
+        <img class="avatar-face" src="assets/images/faceBeard.png" />
       </div>
       <div class="hits">
-          <p> Life left:</p><span id="lifeCount">10</span>
+        <p>Life left:</p>
+        <span id="lifeCount">10</span>
       </div>
     </div>
-    <div id='overlay'> 
+
+    <div id="overlay">
+      <div class="overlay-model">
         <div>YOU DEAD SUCKA</div>
-        <button id='retry-button'>PLAY AGAIN?</button>
+        <button id="retry-button">PLAY AGAIN?</button>
+      </div>
     </div>
   </body>
   <script src="app.js"></script>

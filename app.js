@@ -22,7 +22,7 @@ function convertToWord(choice) {
     if(choice === 'p') return 'PAPER';
     if(choice === 'r') return 'ROCK';
     else
-    return 'Scissors';
+    return 'SCISSORS';
 }
 
 function win(userChoice, computerChoice) {

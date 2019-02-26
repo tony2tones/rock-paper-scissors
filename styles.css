@@ -64,7 +64,11 @@ header > h1 {
     border-bottom: 30px;
     
 }
-
+.avatar-face {
+    width: 150px;
+    height: auto;
+    border-radius: 4px;
+}
 .resize:hover {
     width: 160px;
 }
@@ -75,15 +79,18 @@ header > h1 {
     margin: 0 20px 30px;
     border-radius: 4px;
 }
+
 .resize {
     width: 150px;
     height: auto;
     border-radius: 4px;
     transition: width 0.3s;
 }
+
 .choice:hover{
     cursor: pointer;
 }
+
 #action-message{
     text-align: center;
     font-size: 30px;
