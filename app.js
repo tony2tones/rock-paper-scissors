@@ -1,11 +1,12 @@
 let userScore = 0;
 let compScore = 0;
-let hitPoints = 5;
+let hitPoints = 10;
 
 const userScore_span = document.getElementById("user-score");
 const compScore_span = document.getElementById("comp-score");
-const scoreBoard_div = document.querySelector(".score-board");
 const hitpoints_div = document.getElementById("lifeCount");
+const scoreBoard_div = document.querySelector(".score-board");
+const retry_button = document.getElementById("retry-button");
 const result_div = document.querySelector(".result > p");
 const rock_div = document.getElementById("r");
 const paper_div = document.getElementById("p");
@@ -26,6 +27,7 @@ function win(userChoice, computerChoice) {
 
 function lose(userChoice, computerChoice) {
   compScore++;
+  compScore_span.innerHTML = compScore;
   result_div.innerHTML =
     computerChoice + " beats " + userChoice + " user loses!";
   hitPointsUpdate();
@@ -42,6 +44,12 @@ function on() {
 }
 
 function off() {
+  hitPoints = 10;
+  userScore = 0;
+  compScore = 0;
+  compScore_span.innerHTML = compScore;
+  userScore_span.innerHTML = userScore;
+  hitpoints_div.innerHTML = hitPoints;
   document.getElementById("overlay").style.display = "none";
 }
 
@@ -51,11 +59,9 @@ function hitPointsUpdate() {
   if (lives === 0) {
     on();
     console.log("its over");
-  } else 
-    hitPoints--;
-    hitpoints_div.innerHTML = hitPoints;
-    console.log("your health " + hitPoints);
-  
+  } else hitPoints--;
+  hitpoints_div.innerHTML = hitPoints;
+  console.log("your health " + hitPoints);
 }
 
 function game(userChoice) {
@@ -80,6 +86,9 @@ function game(userChoice) {
 }
 
 function main() {
+  retry_button.addEventListener("click", function() {
+    off();
+  });
   rock_div.addEventListener("click", function() {
     game("r");
   });
