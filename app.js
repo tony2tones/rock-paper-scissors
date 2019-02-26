@@ -18,18 +18,25 @@ function getComputerChoice() {
   return choices[randomNumber];
 }
 
+function convertToWord(choice) {
+    if(choice === 'p') return 'PAPER';
+    if(choice === 'r') return 'ROCK';
+    else
+    return 'Scissors';
+}
+
 function win(userChoice, computerChoice) {
   userScore++;
   userScore_span.innerHTML = userScore;
   result_div.innerHTML =
-    userChoice + " beats " + computerChoice + " user wins!";
+    `${convertToWord(userChoice)} beats ${convertToWord(computerChoice)} user wins!`;
 }
 
 function lose(userChoice, computerChoice) {
   compScore++;
   compScore_span.innerHTML = compScore;
   result_div.innerHTML =
-    computerChoice + " beats " + userChoice + " user loses!";
+  convertToWord(computerChoice) + " beats " + convertToWord(userChoice) + " user loses!";
   hitPointsUpdate();
 }
 
@@ -59,7 +66,8 @@ function hitPointsUpdate() {
   if (lives === 0) {
     on();
     console.log("its over");
-  } else hitPoints--;
+  } else 
+  hitPoints--;
   hitpoints_div.innerHTML = hitPoints;
   console.log("your health " + hitPoints);
 }
