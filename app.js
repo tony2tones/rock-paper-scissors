@@ -60,7 +60,6 @@ function draw(userChoice) {
   setTimeout(function() {
     userChoice_div.remove("grey-glow");
   }, 800);
-
 }
 
 // Overlay logic
@@ -81,12 +80,16 @@ function off() {
 function hitPointsUpdate() {
   let lives = hitPoints;
   console.log(lives);
+
   if (lives === 0) {
     on();
     console.log("its over");
   } else hitPoints--;
   hitpoints_div.innerHTML = hitPoints;
-  console.log("your health " + hitPoints);
+  document.getElementById("face").src = "assets/images/rsp-face-hit.png";
+  setTimeout(function() {
+    document.getElementById("face").src = "assets/images/faceBeard.png";
+  }, 400);
 }
 
 function game(userChoice) {
