@@ -53,8 +53,14 @@ function lose(userChoice, computerChoice) {
   }, 800);
 }
 
-function draw() {
+function draw(userChoice) {
+  userChoice_div = document.getElementById(userChoice).classList;
   result_div.innerHTML = "Its a draw, no winner. Try again.";
+  userChoice_div.add("grey-glow");
+  setTimeout(function() {
+    userChoice_div.remove("grey-glow");
+  }, 800);
+
 }
 
 // Overlay logic
@@ -100,7 +106,7 @@ function game(userChoice) {
     case "pp":
     case "rr":
     case "ss":
-      draw();
+      draw(userChoice);
   }
 }
 
