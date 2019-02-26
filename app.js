@@ -19,24 +19,27 @@ function getComputerChoice() {
 }
 
 function convertToWord(choice) {
-    if(choice === 'p') return 'PAPER';
-    if(choice === 'r') return 'ROCK';
-    else
-    return 'SCISSORS';
+  if (choice === "p") return "PAPER";
+  if (choice === "r") return "ROCK";
+  else return "SCISSORS";
 }
 
 function win(userChoice, computerChoice) {
   userScore++;
   userScore_span.innerHTML = userScore;
-  result_div.innerHTML =
-    `${convertToWord(userChoice)} beats ${convertToWord(computerChoice)} user wins!`;
+  result_div.innerHTML = `${convertToWord(userChoice)} beats ${convertToWord(
+    computerChoice
+  )} user wins!`;
 }
 
 function lose(userChoice, computerChoice) {
   compScore++;
   compScore_span.innerHTML = compScore;
   result_div.innerHTML =
-  convertToWord(computerChoice) + " beats " + convertToWord(userChoice) + " user loses!";
+    convertToWord(computerChoice) +
+    " beats " +
+    convertToWord(userChoice) +
+    " user loses!";
   hitPointsUpdate();
 }
 
@@ -47,7 +50,6 @@ function draw() {
 // Overlay logic
 function on() {
   console.log("your lives are over brah");
-  document.getElementById("overlay").style.display = "block";
 }
 
 function off() {
@@ -66,8 +68,7 @@ function hitPointsUpdate() {
   if (lives === 0) {
     on();
     console.log("its over");
-  } else 
-  hitPoints--;
+  } else hitPoints--;
   hitpoints_div.innerHTML = hitPoints;
   console.log("your health " + hitPoints);
 }
@@ -99,6 +100,10 @@ function main() {
   });
   rock_div.addEventListener("click", function() {
     game("r");
+    document.getElementById("user-choice").src = "assets/images/srock.png";
+    document.getElementById("user-choice").style.display = "block";
+    document.getElementById("user-choice").style.transform = "translate(200px)";
+      
   });
 
   paper_div.addEventListener("click", function() {

@@ -61,7 +61,7 @@ header > h1 {
 .choices {
     margin: 35px;
     text-align: center;
-    border-bottom: 30px;
+    border-bottom: 20px;
     
 }
 .avatar-face {
@@ -101,7 +101,7 @@ header > h1 {
 
 .avatar {
     text-align:center;
-    margin: 50px;
+    margin: 20px;
 }
 
 .hits {
@@ -130,4 +130,13 @@ header > h1 {
     background-color: rgba(0,0,0,0.5); /* Black background with opacity */
     z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
     cursor: pointer; /* Add a pointer on hover */
+  }
+
+  #user-choice:hover {
+    transform: translateX(200px);
+  }
+
+  #user-choice {
+    transition: all 1.5s ease;
+    display: none;
   }
