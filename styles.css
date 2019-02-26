@@ -87,6 +87,8 @@ header > h1 {
     transition: width 0.3s;
 }
 
+
+
 .choice:hover{
     cursor: pointer;
 }
@@ -140,3 +142,52 @@ header > h1 {
     transition: all 1.5s ease;
     display: none;
   }
+
+  /* hover transitions for rock paper and scissors */
+  #r {
+    width: 150px;
+    height: auto;
+    border-radius: 4px;
+    transition: transform .2s;
+  }
+  #r:hover {
+    content: url('assets/images/srock-attack.png');
+    transform: scale(1.5);
+  }
+
+  #p {
+    width: 150px;
+    height: auto;
+    border-radius: 4px;
+    transition: transform .2s;
+  }
+  #p:hover {
+    content: url('assets/images/spaper-attack.png');
+    transform: scale(1.5);
+  }
+
+  #s {
+    width: 150px;
+    height: auto;
+    border-radius: 4px;
+    transition: transform .2s;
+  }
+  #s:hover {
+    content: url('assets/images/scissors-close.png');
+    transform: scale(1.5);
+  }
+
+  .green-glow {
+      border: 4px solid #4dcc7d;
+      box-shadow: 0 0 10px #31b43a;
+  }
+
+  .red-glow {
+    border: 4px solid #fc121b;
+    box-shadow: 0 0 10px #d01115;
+}
+
+.grey-glow {
+    border: 4px solid #fc121b;
+    box-shadow: 0 0 10px #d01115;
+}
