@@ -70,18 +70,18 @@ header > h1 {
     border-radius: 4px;
 }
 .resize:hover {
-    width: 160px;
+    width: 140px;
 }
 
 .choice {
     border: 4px solid white;
     display:inline-block;
     margin: 0 20px 30px;
-    border-radius: 4px;
+    border-radius: 4px; 
 }
 
 .resize {
-    width: 150px;
+    width: 130px;
     height: auto;
     border-radius: 4px;
     transition: width 0.3s;
@@ -115,6 +115,8 @@ header > h1 {
     margin-top: 20px;
 }
 
+/* Result overlay */
+
 #overlay {
     text-align: center;
     font-size: 30px;
@@ -134,6 +136,10 @@ header > h1 {
     cursor: pointer; /* Add a pointer on hover */
   }
 
+  .result-lose {
+      margin: auto;
+  }
+
   #user-choice:hover {
     transform: translateX(200px);
   }
@@ -145,7 +151,7 @@ header > h1 {
 
   /* hover transitions for rock paper and scissors */
   #r {
-    width: 150px;
+    width: auto;
     height: auto;
     border-radius: 4px;
     transition: transform .2s;
@@ -153,10 +159,11 @@ header > h1 {
   #r:hover {
     content: url('assets/images/srock-attack.png');
     transform: scale(1.2);
+    transition: transform 0.5s ease-in-out;
   }
 
   #p {
-    width: 150px;
+    width: auto;
     height: auto;
     border-radius: 4px;
     transition: transform .2s;
@@ -164,10 +171,11 @@ header > h1 {
   #p:hover {
     content: url('assets/images/spaper-attack.png');
     transform: scale(1.2);
+    transition: transform 0.5s ease-in-out;
   }
 
   #s {
-    width: 150px;
+    width: auto;
     height: auto;
     border-radius: 4px;
     transition: transform .2s;
@@ -175,12 +183,7 @@ header > h1 {
   #s:hover {
     content: url('assets/images/scissors-close.png');
     transform: scale(1.2);
-  }
-
-  .no-hover {
-    width: 150px;
-    height: auto;
-    border-radius: 4px;
+    transition: transform 0.5s ease-in-out;
   }
 
   .green-glow {

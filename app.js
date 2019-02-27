@@ -1,6 +1,6 @@
 let userScore = 0;
 let compScore = 0;
-let hitPoints = 10;
+let hitPoints = 3;
 
 const userScore_span = document.getElementById("user-score");
 const compScore_span = document.getElementById("comp-score");
@@ -65,6 +65,7 @@ function draw(userChoice) {
 // Overlay logic
 function on() {
   console.log("your lives are over brah");
+  document.getElementById("overlay").style.display = "block";
 }
 
 function off() {
@@ -84,12 +85,14 @@ function hitPointsUpdate() {
   if (lives === 0) {
     on();
     console.log("its over");
-  } else hitPoints--;
-  hitpoints_div.innerHTML = hitPoints;
-  document.getElementById("face").src = "assets/images/rsp-face-hit.png";
-  setTimeout(function() {
-    document.getElementById("face").src = "assets/images/faceBeard.png";
-  }, 400);
+  } else {
+    hitPoints--;
+    hitpoints_div.innerHTML = hitPoints;
+    document.getElementById("face").src = "assets/images/rsp-face-hit.png";
+    setTimeout(function() {
+      document.getElementById("face").src = "assets/images/faceBeard.png";
+    }, 400);
+  }
 }
 
 function game(userChoice) {
@@ -120,9 +123,6 @@ function main() {
   rock_div.addEventListener("click", function() {
     game("r");
 
-    // document.getElementById("user-choice").src = "assets/images/srock.png";
-    // document.getElementById("user-choice").style.display = "block";
-    // document.getElementById("user-choice").style.transform = "translate(200px)";
   });
 
   paper_div.addEventListener("click", function() {
