@@ -1,6 +1,6 @@
 let userScore = 0;
 let compScore = 0;
-let hitPoints = 3;
+let hitPoints = 1;
 
 const userScore_span = document.getElementById("user-score");
 const compScore_span = document.getElementById("comp-score");
@@ -65,6 +65,8 @@ function draw(userChoice) {
 // Overlay logic
 function on() {
   console.log("your lives are over brah");
+  var rsp = document.querySelector("body");
+  document.addEventListener('DOMContentLoaded', function(){rsp.style.display = "none";});
   document.getElementById("overlay").style.display = "block";
 }
 
@@ -83,6 +85,8 @@ function hitPointsUpdate() {
   console.log(lives);
 
   if (lives === 0) {
+    var rsp = document.querySelector("body");
+    document.addEventListener('DOMContentLoaded', function(){rsp.style.display = "none";});
     on();
     console.log("its over");
   } else {

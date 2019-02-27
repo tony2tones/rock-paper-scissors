@@ -8,6 +8,11 @@
 body {
     background:  #24272E;
 }
+
+.rsp {
+    display:block;
+}
+
 header {
     background: whitesmoke;
     padding: 20px;
@@ -81,7 +86,7 @@ header > h1 {
 }
 
 .resize {
-    width: 130px;
+    width: auto;
     height: auto;
     border-radius: 4px;
     transition: width 0.3s;
@@ -123,7 +128,7 @@ header > h1 {
     font-weight: bold;
     color:white;
     font-family: 'Asap', sans-serif;
-    position: fixed; /* Sit on top of the page content */
+    position: relative; /* Sit on top of the page content */
     display: none; /* Hidden by default */
     width: 100%; /* Full width (cover the whole page) */
     height: 100%; /* Full height (cover the whole page) */
@@ -136,7 +141,7 @@ header > h1 {
     cursor: pointer; /* Add a pointer on hover */
   }
 
-  .result-lose {
+  #overlay > .result-lose {
       margin: auto;
   }
 
