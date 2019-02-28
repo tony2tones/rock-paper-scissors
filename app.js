@@ -1,6 +1,7 @@
 let userScore = 0;
 let compScore = 0;
-let hitPoints = 1;
+let hitPoints = 5;
+let compHitPoints = 1;
 
 const userScore_span = document.getElementById("user-score");
 const compScore_span = document.getElementById("comp-score");
@@ -12,6 +13,7 @@ const rock_div = document.getElementById("r");
 const paper_div = document.getElementById("p");
 const scissors_div = document.getElementById("s");
 const userChoice_img = document.getElementById("user-choice");
+const overlay_div = document.querySelector(".result-lose > p");
 
 function getComputerChoice() {
   const choices = ["r", "p", "s"];
@@ -20,15 +22,15 @@ function getComputerChoice() {
 }
 
 function setImage(choice) {
-  switch(choice) {
-    case 'r':
-    return "this is a rock";
-    break;
-    case 's':
-    return 'this is a scissors';
-    break;
-    case 'p':
-    return 'this is a paper';
+  switch (choice) {
+    case "r":
+      return "this is a rock";
+      break;
+    case "s":
+      return "this is a scissors";
+      break;
+    case "p":
+      return "this is a paper";
   }
 }
 
@@ -48,7 +50,6 @@ function win(userChoice, computerChoice) {
   userChoice_div.add("green-glow");
   setTimeout(function() {
     userChoice_div.remove("green-glow");
-    
   }, 800);
 }
 
@@ -78,12 +79,14 @@ function draw(userChoice) {
 }
 
 // Overlay logic
-function on() {
-  console.log("your lives are over brah");
-  var rsp = document.querySelector("body");
-  document.addEventListener("DOMContentLoaded", function() {
-    rsp.style.display = "none";
-  });
+function loses() {
+  console.log(' you actually lose');
+  document.getElementById("overlay").style.display = "block";
+}
+
+function winner() {
+  console.log(' you actually win');
+  overlay_div.innerHTML = "YOU WIN!";
   document.getElementById("overlay").style.display = "block";
 }
 
@@ -99,18 +102,23 @@ function off() {
 
 function hitPointsUpdate() {
   let lives = hitPoints;
+  let score = userScore;
   console.log(lives);
+  let compLife = compHitPoints;
 
-  if (lives === 0) {
-    on();
-  } else {
-    hitPoints--;
+  hitPoints--;
     hitpoints_div.innerHTML = hitPoints;
     document.getElementById("face").src = "assets/images/rsp-face-hit.png";
     setTimeout(function() {
       document.getElementById("face").src = "assets/images/faceBeard.png";
     }, 400);
+
+  if (hitPoints === 0 && score < compScore) {
+    loses();
+  } else if (score === 5 && score > compScore) {
+    winner();
   }
+
 }
 
 function game(userChoice) {
