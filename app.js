@@ -66,7 +66,9 @@ function draw(userChoice) {
 function on() {
   console.log("your lives are over brah");
   var rsp = document.querySelector("body");
-  document.addEventListener('DOMContentLoaded', function(){rsp.style.display = "none";});
+  document.addEventListener("DOMContentLoaded", function() {
+    rsp.style.display = "none";
+  });
   document.getElementById("overlay").style.display = "block";
 }
 
@@ -86,9 +88,11 @@ function hitPointsUpdate() {
 
   if (lives === 0) {
     var rsp = document.querySelector("body");
-    document.addEventListener('DOMContentLoaded', function(){rsp.style.display = "none";});
+    document.addEventListener("DOMContentLoaded", function() {
+      rsp.style.display = "none";
+    });
+
     on();
-    console.log("its over");
   } else {
     hitPoints--;
     hitpoints_div.innerHTML = hitPoints;
@@ -124,9 +128,9 @@ function main() {
   retry_button.addEventListener("click", function() {
     off();
   });
+
   rock_div.addEventListener("click", function() {
     game("r");
-
   });
 
   paper_div.addEventListener("click", function() {

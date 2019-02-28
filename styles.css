@@ -66,9 +66,9 @@ header > h1 {
 .choices {
     margin: 35px;
     text-align: center;
-    border-bottom: 20px;
-    
+    border-bottom: 20px;    
 }
+
 .avatar-face {
     width: 150px;
     height: auto;
@@ -81,7 +81,7 @@ header > h1 {
 .choice {
     border: 4px solid white;
     display:inline-block;
-    margin: 0 20px 30px;
+    margin: 0 30px 0px;
     border-radius: 4px; 
 }
 
@@ -164,7 +164,7 @@ header > h1 {
   #r:hover {
     content: url('assets/images/srock-attack.png');
     transform: scale(1.2);
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.8s ease-in-out;
   }
 
   #p {
@@ -176,7 +176,7 @@ header > h1 {
   #p:hover {
     content: url('assets/images/spaper-attack.png');
     transform: scale(1.2);
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.5s ease;
   }
 
   #s {
@@ -188,7 +188,14 @@ header > h1 {
   #s:hover {
     content: url('assets/images/scissors-close.png');
     transform: scale(1.2);
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.5s ease;
+  }
+
+  .transform {
+    transition: all 2s ease;
+  }
+  .transform:hover {
+    transform: scale(1.2);
   }
 
   .green-glow {
