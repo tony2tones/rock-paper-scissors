@@ -11,11 +11,25 @@ const result_div = document.querySelector(".result > p");
 const rock_div = document.getElementById("r");
 const paper_div = document.getElementById("p");
 const scissors_div = document.getElementById("s");
+const userChoice_img = document.getElementById("user-choice");
 
 function getComputerChoice() {
   const choices = ["r", "p", "s"];
   const randomNumber = Math.floor(Math.random() * 3);
   return choices[randomNumber];
+}
+
+function setImage(choice) {
+  switch(choice) {
+    case 'r':
+    return "this is a rock";
+    break;
+    case 's':
+    return 'this is a scissors';
+    break;
+    case 'p':
+    return 'this is a paper';
+  }
 }
 
 function convertToWord(choice) {
@@ -34,6 +48,7 @@ function win(userChoice, computerChoice) {
   userChoice_div.add("green-glow");
   setTimeout(function() {
     userChoice_div.remove("green-glow");
+    
   }, 800);
 }
 
@@ -87,11 +102,6 @@ function hitPointsUpdate() {
   console.log(lives);
 
   if (lives === 0) {
-    var rsp = document.querySelector("body");
-    document.addEventListener("DOMContentLoaded", function() {
-      rsp.style.display = "none";
-    });
-
     on();
   } else {
     hitPoints--;
