@@ -134,13 +134,13 @@ header > h1 {
 }
 
 #overlay button {
-    background-color:whitesmoke;
-    padding: 10px;
-    border-radius: 4px;
+  background-color: whitesmoke;
+  padding: 10px;
+  border-radius: 4px;
 }
 
-#overlay button:hover{
-    cursor: pointer;
+#overlay button:hover {
+  cursor: pointer;
 }
 
 .result-lose {
@@ -184,7 +184,6 @@ header > h1 {
   content: url("assets/images/scissors-close.png");
 }
 
-
 .green-glow {
   border: 4px solid #4dcc7d;
   box-shadow: 0 0 10px #31b43a;
@@ -198,4 +197,18 @@ header > h1 {
 .grey-glow {
   border: 4px solid #464647;
   box-shadow: 0 0 10px #25292b;
+}
+
+#footy {
+  width: 100%;
+  height: 44px;
+  padding-top: 20px;
+  background: black;
+  color: white;
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+  position: absolute; /*Here's what sticks it*/
+  bottom: 0; /*to the bottom of the body/page*/
+  left: 0; /*and to the left of the body/page.*/
 }
