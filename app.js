@@ -24,7 +24,7 @@ function getComputerChoice() {
 function setImage(choice) {
   switch (choice) {
     case "r":
-      return "this is a rock";
+      document.getElementById("compChoice").style.display = "block";
       break;
     case "s":
       return "this is a scissors";
@@ -80,12 +80,12 @@ function draw(userChoice) {
 
 // Overlay logic
 function loses() {
-  console.log(' you actually lose');
+  console.log(" you actually lose");
   document.getElementById("overlay").style.display = "block";
 }
 
 function winner() {
-  console.log(' you actually win');
+  console.log(" you actually win");
   overlay_div.innerHTML = "YOU WIN!";
   document.getElementById("overlay").style.display = "block";
 }
@@ -107,18 +107,17 @@ function hitPointsUpdate() {
   let compLife = compHitPoints;
 
   hitPoints--;
-    hitpoints_div.innerHTML = hitPoints;
-    document.getElementById("face").src = "assets/images/rsp-face-hit.png";
-    setTimeout(function() {
-      document.getElementById("face").src = "assets/images/faceBeard.png";
-    }, 400);
+  hitpoints_div.innerHTML = hitPoints;
+  document.getElementById("face").src = "assets/images/rsp-face-hit.png";
+  setTimeout(function() {
+    document.getElementById("face").src = "assets/images/faceBeard.png";
+  }, 400);
 
   if (hitPoints === 0 && score < compScore) {
     loses();
   } else if (score === 5 && score > compScore) {
     winner();
   }
-
 }
 
 function game(userChoice) {
@@ -149,6 +148,10 @@ function main() {
 
   rock_div.addEventListener("click", function() {
     game("r");
+    image = document.getElementById("userChoiceImg");
+    image2 = document.getElementById("compChoiceImg");
+    image.src = "assets/images/srock-attack.png";
+    document.getElementById("userChoice").style.display = "block";
   });
 
   paper_div.addEventListener("click", function() {

@@ -10,7 +10,8 @@ body {
 }
 
 .rsp {
-  display: block;
+  display: flex;
+  justify-content:space-between;
 }
 
 header {
@@ -151,10 +152,14 @@ header > h1 {
   padding: 10px;
 }
 
-#user-choice {
+#userChoice {
   /* transition: all 1.5s ease; */
   display: none;
 }
+#compChoice {
+    /* transition: all 1.5s ease; */
+    display: none;
+  }
 
 /* hover transitions for rock paper and scissors */
 #r {
