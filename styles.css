@@ -158,6 +158,7 @@ header > h1 {
 }
 #compChoice {
     /* transition: all 1.5s ease; */
+    transform: scaleX(-1);
     display: none;
   }
 

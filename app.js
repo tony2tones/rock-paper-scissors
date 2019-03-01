@@ -25,12 +25,18 @@ function setImage(choice) {
   switch (choice) {
     case "r":
       document.getElementById("compChoice").style.display = "block";
+      image = document.getElementById("compChoiceImg");
+      image.src = "assets/images/srock-attack.png";
       break;
     case "s":
-      return "this is a scissors";
+      document.getElementById("compChoice").style.display = "block";
+      image = document.getElementById("compChoiceImg");
+      image.src = "assets/images/scissors-close.png";
       break;
     case "p":
-      return "this is a paper";
+      document.getElementById("compChoice").style.display = "block";
+      image = document.getElementById("compChoiceImg");
+      image.src = "assets/images/spaper-attack.png";
   }
 }
 
@@ -123,6 +129,7 @@ function hitPointsUpdate() {
 function game(userChoice) {
   result_div.innerHTML = "Make your move";
   const computerChoice = getComputerChoice();
+  setImage(computerChoice);
   switch (userChoice + computerChoice) {
     case "rs":
     case "pr":
@@ -149,13 +156,15 @@ function main() {
   rock_div.addEventListener("click", function() {
     game("r");
     image = document.getElementById("userChoiceImg");
-    image2 = document.getElementById("compChoiceImg");
     image.src = "assets/images/srock-attack.png";
     document.getElementById("userChoice").style.display = "block";
   });
 
   paper_div.addEventListener("click", function() {
     game("p");
+    image = document.getElementById("userChoiceImg");
+    image.src = "assets/images/spaper-attack.png";
+    document.getElementById("userChoice").style.display = "block";
   });
 
   scissors_div.addEventListener("click", function() {
