@@ -1,7 +1,7 @@
 let userScore = 0;
 let compScore = 0;
 let hitPoints = 5;
-let compHitPoints = 1;
+let compHitPoints = 5;
 
 const userScore_span = document.getElementById("user-score");
 const compScore_span = document.getElementById("comp-score");
@@ -14,52 +14,51 @@ const paper_div = document.getElementById("p");
 const scissors_div = document.getElementById("s");
 const userChoice_img = document.getElementById("user-choice");
 const overlay_div = document.querySelector(".result-lose > p");
+const compHand_div = document.getElementById("compChoiceImg");
 
-function getComputerChoice() {
+getComputerChoice = () => {
   const choices = ["r", "p", "s"];
   const randomNumber = Math.floor(Math.random() * 3);
   return choices[randomNumber];
 }
 
-function setImage(choice) {
+setImage = (choice) => {
   switch (choice) {
     case "r":
       document.getElementById("compChoice").style.display = "block";
-      image = document.getElementById("compChoiceImg");
-      image.src = "assets/images/srock-attack.png";
+      compHand_div.src = "assets/images/srock-attack.png";
       break;
     case "s":
       document.getElementById("compChoice").style.display = "block";
-      image = document.getElementById("compChoiceImg");
-      image.src = "assets/images/scissors-close.png";
+      compHand_div.src = "assets/images/scissors-close.png";
       break;
     case "p":
       document.getElementById("compChoice").style.display = "block";
-      image = document.getElementById("compChoiceImg");
-      image.src = "assets/images/spaper-attack.png";
+      compHand_div.src = "assets/images/spaper-attack.png";
   }
 }
 
-function convertToWord(choice) {
+convertToWord = (choice) => {
   if (choice === "p") return "PAPER";
   if (choice === "r") return "ROCK";
   else return "SCISSORS";
 }
 
-function win(userChoice, computerChoice) {
+win = (userChoice, computerChoice) => {
   userChoice_div = document.getElementById(userChoice).classList;
   userScore++;
+
   userScore_span.innerHTML = userScore;
   result_div.innerHTML = `${convertToWord(userChoice)} beats ${convertToWord(
     computerChoice
   )} user wins!`;
   userChoice_div.add("green-glow");
-  setTimeout(function() {
+  setTimeout(() => {
     userChoice_div.remove("green-glow");
   }, 800);
 }
 
-function lose(userChoice, computerChoice) {
+lose = (userChoice, computerChoice) => {
   userChoice_div = document.getElementById(userChoice).classList;
   compScore++;
   compScore_span.innerHTML = compScore;
@@ -70,12 +69,12 @@ function lose(userChoice, computerChoice) {
     " user loses!";
   hitPointsUpdate();
   userChoice_div.add("red-glow");
-  setTimeout(function() {
+  setTimeout(() => {
     userChoice_div.remove("red-glow");
   }, 800);
 }
 
-function draw(userChoice) {
+draw = (userChoice) => {
   userChoice_div = document.getElementById(userChoice).classList;
   result_div.innerHTML = "Its a draw, no winner. Try again.";
   userChoice_div.add("grey-glow");
@@ -85,18 +84,16 @@ function draw(userChoice) {
 }
 
 // Overlay logic
-function loses() {
-  console.log(" you actually lose");
+loses = () => {
   document.getElementById("overlay").style.display = "block";
 }
 
-function winner() {
-  console.log(" you actually win");
+winner = () => {
   overlay_div.innerHTML = "YOU WIN!";
   document.getElementById("overlay").style.display = "block";
 }
 
-function off() {
+off = () => {
   hitPoints = 10;
   userScore = 0;
   compScore = 0;
@@ -106,16 +103,15 @@ function off() {
   document.getElementById("overlay").style.display = "none";
 }
 
-function hitPointsUpdate() {
+hitPointsUpdate = () => {
   let lives = hitPoints;
   let score = userScore;
-  console.log(lives);
   let compLife = compHitPoints;
 
   hitPoints--;
   hitpoints_div.innerHTML = hitPoints;
   document.getElementById("face").src = "assets/images/rsp-face-hit.png";
-  setTimeout(function() {
+  setTimeout(() => {
     document.getElementById("face").src = "assets/images/faceBeard.png";
   }, 400);
 
@@ -126,7 +122,7 @@ function hitPointsUpdate() {
   }
 }
 
-function game(userChoice) {
+game = (userChoice) => {
   result_div.innerHTML = "Make your move";
   const computerChoice = getComputerChoice();
   setImage(computerChoice);
@@ -148,26 +144,26 @@ function game(userChoice) {
   }
 }
 
-function main() {
-  retry_button.addEventListener("click", function() {
+main = () => {
+  retry_button.addEventListener("click", () => {
     off();
   });
 
-  rock_div.addEventListener("click", function() {
+  rock_div.addEventListener("click", () => {
     game("r");
     image = document.getElementById("userChoiceImg");
     image.src = "assets/images/srock-attack.png";
     document.getElementById("userChoice").style.display = "block";
   });
 
-  paper_div.addEventListener("click", function() {
+  paper_div.addEventListener("click", () => {
     game("p");
     image = document.getElementById("userChoiceImg");
     image.src = "assets/images/spaper-attack.png";
     document.getElementById("userChoice").style.display = "block";
   });
 
-  scissors_div.addEventListener("click", function() {
+  scissors_div.addEventListener("click", () => {
     game("s");
     image = document.getElementById("userChoiceImg");
     image.src = "assets/images/scissors.png";

@@ -163,7 +163,7 @@ header > h1 {
   display: none;
 }
 #compChoice {
-  /* transition: all 1.5s ease; */
+  transition: all 1.5s ease;
   transform: scaleX(-1);
   display: none;
 }
