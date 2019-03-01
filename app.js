@@ -169,6 +169,9 @@ function main() {
 
   scissors_div.addEventListener("click", function() {
     game("s");
+    image = document.getElementById("userChoiceImg");
+    image.src = "assets/images/scissors.png";
+    document.getElementById("userChoice").style.display = "block";
   });
 }
 

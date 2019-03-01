@@ -11,7 +11,7 @@ body {
 
 .rsp {
   display: flex;
-  justify-content:space-between;
+  justify-content: space-between;
 }
 
 header {
@@ -107,6 +107,12 @@ header > h1 {
   margin: 20px;
 }
 
+#compFace {
+  transform: scaleX(-1);
+  text-align: center;
+  margin: 20px;
+}
+
 .hits {
   text-align: center;
   font-size: 30px;
@@ -157,10 +163,10 @@ header > h1 {
   display: none;
 }
 #compChoice {
-    /* transition: all 1.5s ease; */
-    transform: scaleX(-1);
-    display: none;
-  }
+  /* transition: all 1.5s ease; */
+  transform: scaleX(-1);
+  display: none;
+}
 
 /* hover transitions for rock paper and scissors */
 #r {
