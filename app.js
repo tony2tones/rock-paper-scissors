@@ -5,7 +5,8 @@ let compHitPoints = 5;
 
 const userScore_span = document.getElementById("user-score");
 const compScore_span = document.getElementById("comp-score");
-const hitpoints_div = document.getElementById("lifeCount");
+const userHitpoints_div = document.getElementById("userLife");
+const compHitpoints_div = document.getElementById("compLife");
 const scoreBoard_div = document.querySelector(".score-board");
 const retry_button = document.getElementById("retry-button");
 const result_div = document.querySelector(".result > p");
@@ -20,9 +21,9 @@ getComputerChoice = () => {
   const choices = ["r", "p", "s"];
   const randomNumber = Math.floor(Math.random() * 3);
   return choices[randomNumber];
-}
+};
 
-setImage = (choice) => {
+setImage = choice => {
   switch (choice) {
     case "r":
       document.getElementById("compChoice").style.display = "block";
@@ -36,13 +37,13 @@ setImage = (choice) => {
       document.getElementById("compChoice").style.display = "block";
       compHand_div.src = "assets/images/spaper-attack.png";
   }
-}
+};
 
-convertToWord = (choice) => {
+convertToWord = choice => {
   if (choice === "p") return "PAPER";
   if (choice === "r") return "ROCK";
   else return "SCISSORS";
-}
+};
 
 win = (userChoice, computerChoice) => {
   userChoice_div = document.getElementById(userChoice).classList;
@@ -52,11 +53,12 @@ win = (userChoice, computerChoice) => {
   result_div.innerHTML = `${convertToWord(userChoice)} beats ${convertToWord(
     computerChoice
   )} user wins!`;
+  compHitPointsUpdate();
   userChoice_div.add("green-glow");
   setTimeout(() => {
     userChoice_div.remove("green-glow");
-  }, 800);
-}
+  }, 300);
+};
 
 lose = (userChoice, computerChoice) => {
   userChoice_div = document.getElementById(userChoice).classList;
@@ -67,31 +69,31 @@ lose = (userChoice, computerChoice) => {
     " beats " +
     convertToWord(userChoice) +
     " user loses!";
-  hitPointsUpdate();
+  hitPointsUpdater();
   userChoice_div.add("red-glow");
   setTimeout(() => {
     userChoice_div.remove("red-glow");
   }, 800);
-}
+};
 
-draw = (userChoice) => {
+draw = userChoice => {
   userChoice_div = document.getElementById(userChoice).classList;
   result_div.innerHTML = "Its a draw, no winner. Try again.";
   userChoice_div.add("grey-glow");
   setTimeout(function() {
     userChoice_div.remove("grey-glow");
   }, 800);
-}
+};
 
 // Overlay logic
 loses = () => {
   document.getElementById("overlay").style.display = "block";
-}
+};
 
 winner = () => {
   overlay_div.innerHTML = "YOU WIN!";
   document.getElementById("overlay").style.display = "block";
-}
+};
 
 off = () => {
   hitPoints = 10;
@@ -99,30 +101,40 @@ off = () => {
   compScore = 0;
   compScore_span.innerHTML = compScore;
   userScore_span.innerHTML = userScore;
-  hitpoints_div.innerHTML = hitPoints;
+  userHitpoints_div.innerHTML = hitPoints;
   document.getElementById("overlay").style.display = "none";
-}
-
-hitPointsUpdate = () => {
-  let lives = hitPoints;
+};
+compHitPointsUpdate = () => {
   let score = userScore;
-  let compLife = compHitPoints;
-
   hitPoints--;
-  hitpoints_div.innerHTML = hitPoints;
+  userHitpoints_div.innerHTML = hitPoints;
   document.getElementById("face").src = "assets/images/rsp-face-hit.png";
   setTimeout(() => {
     document.getElementById("face").src = "assets/images/faceBeard.png";
   }, 400);
-
   if (hitPoints === 0 && score < compScore) {
     loses();
   } else if (score === 5 && score > compScore) {
     winner();
   }
-}
+};
 
-game = (userChoice) => {
+hitPointsUpdater = () => {
+  let score = userScore;
+  hitPoints--;
+  userHitpoints_div.innerHTML = hitPoints;
+  document.getElementById("face").src = "assets/images/rsp-face-hit.png";
+  setTimeout(() => {
+    document.getElementById("face").src = "assets/images/faceBeard.png";
+  }, 400);
+  if (hitPoints === 0 && score < compScore) {
+    loses();
+  } else if (score === 5 && score > compScore) {
+    winner();
+  }
+};
+
+game = userChoice => {
   result_div.innerHTML = "Make your move";
   const computerChoice = getComputerChoice();
   setImage(computerChoice);
@@ -142,7 +154,7 @@ game = (userChoice) => {
     case "ss":
       draw(userChoice);
   }
-}
+};
 
 main = () => {
   retry_button.addEventListener("click", () => {
@@ -169,6 +181,6 @@ main = () => {
     image.src = "assets/images/scissors.png";
     document.getElementById("userChoice").style.display = "block";
   });
-}
+};
 
 main();

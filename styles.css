@@ -71,7 +71,12 @@ header > h1 {
   height: 162px;
 }
 
-.avatar-face {
+.user-face {
+  width: 150px;
+  height: auto;
+  border-radius: 4px;
+}
+.comp-face {
   width: 150px;
   height: auto;
   border-radius: 4px;
@@ -102,7 +107,12 @@ header > h1 {
   font-family: "Asap", sans-serif;
 }
 
-.avatar {
+.user {
+  text-align: center;
+  margin: 20px;
+}
+
+.computer {
   text-align: center;
   margin: 20px;
 }
@@ -134,7 +144,7 @@ header > h1 {
   display: none;
   height: 100%;
   width: 100%;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 100;
@@ -159,7 +169,6 @@ header > h1 {
 }
 
 #userChoice {
-  /* transition: all 1.5s ease; */
   display: none;
 }
 #compChoice {
@@ -227,6 +236,6 @@ header > h1 {
   bottom: 0; /*to the bottom of the body/page*/
   left: 0; /*and to the left of the body/page.*/
 }
-.footer-content{
-  color:white;
+.footer-content {
+  color: white;
 }
