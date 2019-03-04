@@ -9,85 +9,88 @@
       <h1>Rock paper Scissors BETA</h1>
     </header>
 
-    <div class="scoreboard">
-      <div id="user-label" class="badge">user</div>
-      <div id="comp-label" class="badge">comp</div>
-      <span id="user-score">0</span>:<span id="comp-score">0</span>
-    </div>
-
-    <div class="rsp">
-      <div class="user">
-          <img class="user-face" id="face" src="assets/images/faceBeard.png" />
-        <div class="hits">
-          <p>Life left:</p>
-          <span id="userLife">10</span>
+    <div class = "container">
+        <div class="scoreboard">
+        <div id="user-label" class="badge">user</div>
+        <div id="comp-label" class="badge">comp</div>
+        <span id="user-score">0</span>:<span id="comp-score">0</span>
         </div>
-      </div>
 
-      <div id="userChoice">
-        <img
-          id="userChoiceImg"
-          class="resize"
-          src="assets/images/scissors.png"
-        />
-      </div>
-
-      <div id="compChoice">
-        <img id="compChoiceImg" class="resize" src="assets/images/scissors.png" />
-      </div>
-
-      <div class="user">
-        <div>
-          <img
-            class="comp-face"
-            id="compFace"
-            src="assets/images/faceBeard.png"
-          />
-        </div>
-        <div class="hits">
-          <p>Life left:</p>
-          <span id="compLife">10</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="choices">
-      <div class="choice transform" id="r">
-        <img src="assets/images/srock.png" />
-      </div>
-      <div class="choice transform" id="p">
-        <img src="assets/images/spaper.png" />
-      </div>
-      <div class="choice transform" id="s">
-        <img src="assets/images/scissors.png" />
-      </div>
-    </div>
-
-    <div class="result">
-        <p>Make your move</p>
-      </div>
-
-    <div id="overlay">
-      <div class="overlay-model">
-        <div class="result-lose">
-          <p>YOU DEAD SUCKA</p>
-          <button id="retry-button">PLAY AGAIN?</button>
-          <div class="user">
-            <div>
-              <img
-                class="user-face"
-                id="face"
-                src="assets/images/rsp-face-hit.png"
-              />
+        <div class="rsp">
+        <div class="user">
+            <img class="user-face" id="face" src="assets/images/faceBeard.png" />
+            <div class="hits">
+            <p>Life left:</p>
+            <span id="userLife">10</span>
             </div>
-          </div>
         </div>
-      </div>
+
+        <div id="userChoice">
+            <img
+            id="userChoiceImg"
+            class="resize"
+            src="assets/images/scissors.png"
+            />
+        </div>
+
+        <div id="compChoice">
+            <img id="compChoiceImg" class="resize" src="assets/images/scissors.png" />
+        </div>
+
+        <div class="user">
+            <div>
+            <img
+                class="comp-face"
+                id="compFace"
+                src="assets/images/faceBeard.png"
+            />
+            </div>
+            <div class="hits">
+            <p>Life left:</p>
+            <span id="compLife">10</span>
+            </div>
+        </div>
+        </div>
+
+        <div class="choices">
+        <div class="choice transform" id="r">
+            <img src="assets/images/srock.png" />
+        </div>
+        <div class="choice transform" id="p">
+            <img src="assets/images/spaper.png" />
+        </div>
+        <div class="choice transform" id="s">
+            <img src="assets/images/scissors.png" />
+        </div>
+        </div>
+
+        <div class="result">
+            <p>Make your move</p>
+        </div>
+
+        <div id="overlay">
+        <div class="overlay-model">
+            <div class="result-lose">
+            <p>YOU DEAD SUCKA</p>
+            <button id="retry-button">PLAY AGAIN?</button>
+            <div class="user">
+                <div>
+                <img
+                    class="user-face"
+                    id="face"
+                    src="assets/images/rsp-face-hit.png"
+                />
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+
+        <div id="compChoice">
+        <img class="resize" src="assets/images/scissors.png" />
+        </div>
     </div>
 
-    <div id="compChoice">
-      <img class="resize" src="assets/images/scissors.png" />
-    </div>
   </body>
   <footer id="footy">
     <div class="footer-content">

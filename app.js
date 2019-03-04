@@ -97,11 +97,13 @@ winner = () => {
 
 off = () => {
   hitPoints = 10;
+  compHitPoints = 10;
   userScore = 0;
   compScore = 0;
   compScore_span.innerHTML = compScore;
   userScore_span.innerHTML = userScore;
   userHitpoints_div.innerHTML = hitPoints;
+  compHitpoints_div.innerHTML = compHitPoints;
   document.getElementById("overlay").style.display = "none";
 };
 
