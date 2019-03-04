@@ -234,10 +234,10 @@ header > h1 {
   text-align: center;
   position: absolute; /*Here's what sticks it*/
   bottom: 0; /*to the bottom of the body/page*/
-  left: 0; /*and to the left of the body/page.*/
 }
 .footer-content {
   color: white;
 }
 
 .link { color: rgb(167, 252, 252); }
+.red { color: rgb(255, 8, 0); }
