@@ -265,4 +265,9 @@ header > h1 {
         height: auto;
         border-radius: 2px;
       }
+      .choices {
+        width: 50px;
+        height: auto;
+        margin: 0px 5px;
+      }
   }
