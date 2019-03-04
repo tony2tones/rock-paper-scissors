@@ -230,12 +230,14 @@ header > h1 {
   color: white;
   font-family: "Asap", sans-serif;
   font-weight: bold;
-  font-size: 24px;
+  font-size: 12px;
   text-align: center;
-  position: relative; /*Here's what sticks it*/
+  position: absolute; /*Here's what sticks it*/
   bottom: 0; /*to the bottom of the body/page*/
   left: 0; /*and to the left of the body/page.*/
 }
 .footer-content {
   color: white;
 }
+
+.link { color: rgb(167, 252, 252); }

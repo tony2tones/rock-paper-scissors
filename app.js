@@ -80,7 +80,7 @@ draw = userChoice => {
   userChoice_div = document.getElementById(userChoice).classList;
   result_div.innerHTML = "Its a draw, no winner. Try again.";
   userChoice_div.add("grey-glow");
-  setTimeout(function() {
+  setTimeout(() => {
     userChoice_div.remove("grey-glow");
   }, 800);
 };
@@ -104,18 +104,19 @@ off = () => {
   userHitpoints_div.innerHTML = hitPoints;
   document.getElementById("overlay").style.display = "none";
 };
+
 compHitPointsUpdate = () => {
   let score = userScore;
-  hitPoints--;
-  userHitpoints_div.innerHTML = hitPoints;
+  compHitPoints--;
+  compHitpoints_div.innerHTML = compHitPoints;
   document.getElementById("face").src = "assets/images/rsp-face-hit.png";
   setTimeout(() => {
     document.getElementById("face").src = "assets/images/faceBeard.png";
   }, 400);
-  if (hitPoints === 0 && score < compScore) {
-    loses();
-  } else if (score === 5 && score > compScore) {
+  if (compHitPoints === 0 && score < userScore) {
     winner();
+  } else if (score === 5 && score > userScore) {
+    loses();
   }
 };
 
