@@ -104,11 +104,14 @@ off = () => {
   userScore_span.innerHTML = userScore;
   userHitpoints_div.innerHTML = hitPoints;
   compHitpoints_div.innerHTML = compHitPoints;
+  document.getElementById("compChoice").style.display = "none";
+  document.getElementById("userChoice").style.display = "none";
+
   document.getElementById("overlay").style.display = "none";
 };
 
 compHitPointsUpdate = () => {
-  let score = userScore;
+  let score = compScore;
   compHitPoints--;
   compHitpoints_div.innerHTML = compHitPoints;
   document.getElementById("face").src = "assets/images/rsp-face-hit.png";
