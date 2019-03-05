@@ -254,7 +254,7 @@ header > h1 {
 }
 
 /* Mobile Styles */
-@media handheld, screen and (max-width: 400px) {
+@media handheld, screen and (max-width: 743px) {
   .user-face {
     width: 50px;
     height: auto;
@@ -296,22 +296,22 @@ header > h1 {
     border-bottom: 20px;
     height: 162px;
   }
-  .resize{
-      width:55px;
-      height: auto;
+  .resize {
+    width: 75px;
+    height: auto;
   }
   #r {
-    width: 50px;
+    width: 55px;
     height: auto;
     border-radius: 4px;
   }
   #p {
-    width: 50px;
+    width: 55px;
     height: auto;
     border-radius: 4px;
   }
   #s {
-    width: 50px;
+    width: 55px;
     height: auto;
     border-radius: 4px;
   }
