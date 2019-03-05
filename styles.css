@@ -255,19 +255,60 @@ header > h1 {
 
 /* Mobile Styles */
 @media handheld, screen and (max-width: 400px) {
-    .user-face {
-        width: 50px;
-        height: auto;
-        border-radius: 2px;
-      }
-      .comp-face {
-        width: 50px;
-        height: auto;
-        border-radius: 2px;
-      }
-      .choices {
-        width: 50px;
-        height: auto;
-        margin: 0px 5px;
-      }
+  .user-face {
+    width: 50px;
+    height: auto;
+    border-radius: 2px;
   }
+  .comp-face {
+    width: 50px;
+    height: auto;
+    border-radius: 2px;
+  }
+  .hits {
+    font-size: 10px;
+  }
+  .choice {
+    border: 4px solid white;
+    display: inline-block;
+    margin: 0 20px 0px;
+    border-radius: 4px;
+  }
+  .choice > img {
+    width: 50px;
+    height: auto;
+  }
+  #userChoice {
+    display: none;
+    width: 50px;
+    height: auto;
+  }
+  #compChoice {
+    transition: all 1.5s ease;
+    transform: scaleX(-1);
+    display: none;
+    width: 50px;
+    height: auto;
+  }
+  .choices {
+    margin: 20px;
+    text-align: center;
+    border-bottom: 20px;
+    height: 162px;
+  }
+  #r {
+    width: 50px;
+    height: auto;
+    border-radius: 4px;
+  }
+  #p {
+    width: 50px;
+    height: auto;
+    border-radius: 4px;
+  }
+  #s {
+    width: 50px;
+    height: auto;
+    border-radius: 4px;
+  }
+}
