@@ -104,6 +104,8 @@ off = () => {
   userScore_span.innerHTML = userScore;
   userHitpoints_div.innerHTML = hitPoints;
   compHitpoints_div.innerHTML = compHitPoints;
+  result_div.innerHTML = 'Make your move';
+
   document.getElementById("compChoice").style.display = "none";
   document.getElementById("userChoice").style.display = "none";
 
