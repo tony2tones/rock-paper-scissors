@@ -296,6 +296,10 @@ header > h1 {
     border-bottom: 20px;
     height: 162px;
   }
+  .resize{
+      width:55px;
+      height: auto;
+  }
   #r {
     width: 50px;
     height: auto;
