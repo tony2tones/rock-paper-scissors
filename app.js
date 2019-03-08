@@ -22,10 +22,11 @@ const scissors_div = document.getElementById("s");
 const userChoice_img = document.getElementById("user-choice");
 const overlay_div = document.querySelector(".result-lose > p");
 const compHand_div = document.getElementById("compChoiceImg");
+const userFace_img = document.getElementById("face");
 
 const imgMapper = {
     ROCK : 'assets/images/srock-attack.png',
-    PAPER : 'assets/images/srock-attack.png',
+    PAPER : 'assets/images/spaper-attack.png',
     SCISSORS : 'assets/images/scissors.png'
 }
 
@@ -58,6 +59,9 @@ convertToWord = choice => {
 
  imageMap = imgChoice => {
     console.log(imgMapper[imgChoice]);
+    image = document.getElementById('userChoiceImg');
+    image.src = imgMapper[imgChoice];
+    document.getElementById("userChoice").style.display = "block";
     return imgMapper[imgChoice];
     
 }
@@ -149,9 +153,9 @@ hitPointsUpdater = () => {
   let score = userScore;
   hitPoints--;
   userHitpoints_div.innerHTML = hitPoints;
-  document.getElementById("face").src = "assets/images/rsp-face-hit.png";
+  userFace_img.src = "assets/images/rsp-face-hit.png";
   setTimeout(() => {
-    document.getElementById("face").src = "assets/images/faceBeard.png";
+    userFace_img.src = "assets/images/faceBeard.png";
   }, 400);
   if (hitPoints === 0 && score < compScore) {
     loses();
@@ -190,23 +194,16 @@ main = () => {
   rock_div.addEventListener("click", () => {
     game("r");
     imageMap('ROCK');
-    image = document.getElementById("userChoiceImg");
-    image.src = "assets/images/srock-attack.png";
-    document.getElementById("userChoice").style.display = "block";
   });
 
   paper_div.addEventListener("click", () => {
     game("p");
-    image = document.getElementById("userChoiceImg");
-    image.src = "assets/images/spaper-attack.png";
-    document.getElementById("userChoice").style.display = "block";
+    imageMap('PAPER');
   });
 
   scissors_div.addEventListener("click", () => {
     game("s");
-    image = document.getElementById("userChoiceImg");
-    image.src = "assets/images/scissors.png";
-    document.getElementById("userChoice").style.display = "block";
+    imageMap('SCISSORS');
   });
 };
 
