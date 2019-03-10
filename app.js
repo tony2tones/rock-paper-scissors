@@ -19,16 +19,17 @@ const result_div = document.querySelector(".result > p");
 const rock_div = document.getElementById("r");
 const paper_div = document.getElementById("p");
 const scissors_div = document.getElementById("s");
-const userChoice_img = document.getElementById("user-choice");
+const userChoice_img = document.getElementById("user-choice"); 
 const overlay_div = document.querySelector(".result-lose > p");
 const compHand_div = document.getElementById("compChoiceImg");
+const userHand_div = document.getElementById("userChoiceImg");
+const userFace_img = document.getElementById("face");
 
 const imgMapper = {
-    ROCK : 'assets/images/srock-attack.png',
-    PAPER : 'assets/images/srock-attack.png',
-    SCISSORS : 'assets/images/scissors.png'
-}
-
+  ROCK: "assets/images/srock-attack.png",
+  PAPER: "assets/images/spaper-attack.png",
+  SCISSORS: "assets/images/scissors.png"
+};
 
 getComputerChoice = () => {
   const choices = ["r", "p", "s"];
@@ -40,13 +41,13 @@ setImage = choice => {
   document.getElementById("compChoice").style.display = "block";
   switch (choice) {
     case "r":
-      compHand_div.src = "assets/images/srock-attack.png";
+      compHand_div.src = imgMapper.ROCK;
       break;
     case "s":
-      compHand_div.src = "assets/images/scissors-close.png";
+      compHand_div.src = imgMapper.SCISSORS;
       break;
     case "p":
-      compHand_div.src = "assets/images/spaper-attack.png";
+      compHand_div.src = imgMapper.PAPER;
   }
 };
 
@@ -56,11 +57,12 @@ convertToWord = choice => {
   else return "SCISSORS";
 };
 
- imageMap = imgChoice => {
-    console.log(imgMapper[imgChoice]);
-    return imgMapper[imgChoice];
-    
-}
+imageMap = imgChoice => {
+  image = document.getElementById("userChoiceImg");
+  image.src = imgMapper[imgChoice];
+  document.getElementById("userChoice").style.display = "block";
+  return imgMapper[imgChoice];
+};
 
 win = (userChoice, computerChoice) => {
   userChoice_div = document.getElementById(userChoice).classList;
@@ -127,7 +129,7 @@ off = () => {
   document.getElementById("compChoice").style.display = "none";
   document.getElementById("userChoice").style.display = "none";
 
-  document.getElementById("overlay").style.display = "none";
+  overlay.style.display = "none";
 };
 
 compHitPointsUpdate = () => {
@@ -149,9 +151,9 @@ hitPointsUpdater = () => {
   let score = userScore;
   hitPoints--;
   userHitpoints_div.innerHTML = hitPoints;
-  document.getElementById("face").src = "assets/images/rsp-face-hit.png";
+  userFace_img.src = "assets/images/rsp-face-hit.png";
   setTimeout(() => {
-    document.getElementById("face").src = "assets/images/faceBeard.png";
+    userFace_img.src = "assets/images/faceBeard.png";
   }, 400);
   if (hitPoints === 0 && score < compScore) {
     loses();
@@ -189,24 +191,17 @@ main = () => {
 
   rock_div.addEventListener("click", () => {
     game("r");
-    imageMap('ROCK');
-    image = document.getElementById("userChoiceImg");
-    image.src = "assets/images/srock-attack.png";
-    document.getElementById("userChoice").style.display = "block";
+    imageMap("ROCK");
   });
 
   paper_div.addEventListener("click", () => {
     game("p");
-    image = document.getElementById("userChoiceImg");
-    image.src = "assets/images/spaper-attack.png";
-    document.getElementById("userChoice").style.display = "block";
+    imageMap("PAPER");
   });
 
   scissors_div.addEventListener("click", () => {
     game("s");
-    image = document.getElementById("userChoiceImg");
-    image.src = "assets/images/scissors.png";
-    document.getElementById("userChoice").style.display = "block";
+    imageMap("SCISSORS");
   });
 };
 
