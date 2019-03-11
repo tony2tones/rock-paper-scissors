@@ -1,8 +1,14 @@
 let userScore = 0;
 let compScore = 0;
-let hitPoints = 5;
+let hitPoints = 2;
 let compHitPoints = 5;
 
+const ROCK = "r";
+const PAPER = "p";
+const SCISSORS = "s";
+
+const userImage = document.getElementById("userChoiceImg");
+const overlay = document.getElementById("overlay");
 const userScore_span = document.getElementById("user-score");
 const compScore_span = document.getElementById("comp-score");
 const userHitpoints_div = document.getElementById("userLife");
@@ -16,6 +22,17 @@ const scissors_div = document.getElementById("s");
 const userChoice_img = document.getElementById("user-choice");
 const overlay_div = document.querySelector(".result-lose > p");
 const compHand_div = document.getElementById("compChoiceImg");
+const userHand_div = document.getElementById("userChoiceImg");
+const userFace_img = document.getElementById("face");
+
+const compChoice_div = document.getElementById("compChoice");
+const userChoice_div = document.getElementById("userChoice");
+
+const imgMapper = {
+  ROCK: "assets/images/srock-attack.png",
+  PAPER: "assets/images/spaper-attack.png",
+  SCISSORS: "assets/images/scissors.png"
+};
 
 getComputerChoice = () => {
   const choices = ["r", "p", "s"];
@@ -24,18 +41,16 @@ getComputerChoice = () => {
 };
 
 setImage = choice => {
+  compChoice_div.style.display = "block";
   switch (choice) {
     case "r":
-      document.getElementById("compChoice").style.display = "block";
-      compHand_div.src = "assets/images/srock-attack.png";
+      compHand_div.src = imgMapper.ROCK;
       break;
     case "s":
-      document.getElementById("compChoice").style.display = "block";
-      compHand_div.src = "assets/images/scissors-close.png";
+      compHand_div.src = imgMapper.SCISSORS;
       break;
     case "p":
-      document.getElementById("compChoice").style.display = "block";
-      compHand_div.src = "assets/images/spaper-attack.png";
+      compHand_div.src = imgMapper.PAPER;
   }
 };
 
@@ -45,54 +60,76 @@ convertToWord = choice => {
   else return "SCISSORS";
 };
 
-win = (userChoice, computerChoice) => {
-  userChoice_div = document.getElementById(userChoice).classList;
-  userScore++;
+imageMap = imgChoice => {
+  image = document.getElementById("userChoiceImg");
+  image.src = imgMapper[imgChoice];
+  userChoice_div.style.display = "block";
+  return imgMapper[imgChoice];
+};
 
-  userScore_span.innerHTML = userScore;
+scoreCounter = (score, scoreSpan, winner) => {
+  if (winner === "user") {
+    userScore++;
+    scoreSpan.innerHTML = userScore;
+  } else {
+    compScore++;
+    compScore_span.innerHTML = compScore;
+    console.log(scoreSpan, " does note equal user-score");
+  }
+};
+
+win = (userChoice, computerChoice) => {
+  scoreCounter(userScore, userScore_span, "user");
+
   result_div.innerHTML = `${convertToWord(userChoice)} beats ${convertToWord(
     computerChoice
   )} user wins!`;
+
   compHitPointsUpdate();
-  userChoice_div.add("green-glow");
+  userHand_div.classList.add("green-glow");
+  compHand_div.classList.add("red-glow");
   setTimeout(() => {
-    userChoice_div.remove("green-glow");
+    userHand_div.classList.remove("green-glow");
+    compHand_div.classList.remove("red-glow");
   }, 300);
 };
 
 lose = (userChoice, computerChoice) => {
-  userChoice_div = document.getElementById(userChoice).classList;
-  compScore++;
-  compScore_span.innerHTML = compScore;
+  scoreCounter(compScore, compScore_span, "comp");
   result_div.innerHTML =
     convertToWord(computerChoice) +
     " beats " +
     convertToWord(userChoice) +
     " user loses!";
+
   hitPointsUpdater();
-  userChoice_div.add("red-glow");
+  userHand_div.classList.add("red-glow");
+  compHand_div.classList.add("green-glow");
   setTimeout(() => {
-    userChoice_div.remove("red-glow");
+    userHand_div.classList.remove("red-glow");
+    compHand_div.classList.remove("green-glow");
   }, 800);
 };
 
 draw = userChoice => {
-  userChoice_div = document.getElementById(userChoice).classList;
-  result_div.innerHTML = "Its a draw, no winner. Try again.";
-  userChoice_div.add("grey-glow");
+  result_div.innerHTML = "Its a draw. Try again.";
+  userHand_div.classList.add("grey-glow");
+  compHand_div.classList.add("grey-glow");
   setTimeout(() => {
-    userChoice_div.remove("grey-glow");
+    userHand_div.classList.remove("grey-glow");
+    compHand_div.classList.remove("grey-glow");
   }, 800);
 };
 
 // Overlay logic
 loses = () => {
-  document.getElementById("overlay").style.display = "block";
+  overlay_div.innerHTML = "YOU LOSE";
+  overlay.style.display = "block";
 };
 
 winner = () => {
   overlay_div.innerHTML = "YOU WIN!";
-  document.getElementById("overlay").style.display = "block";
+  overlay.style.display = "block";
 };
 
 off = () => {
@@ -104,21 +141,21 @@ off = () => {
   userScore_span.innerHTML = userScore;
   userHitpoints_div.innerHTML = hitPoints;
   compHitpoints_div.innerHTML = compHitPoints;
-  result_div.innerHTML = 'Make your move';
+  result_div.innerHTML = "Make your move";
 
-  document.getElementById("compChoice").style.display = "none";
-  document.getElementById("userChoice").style.display = "none";
+  compChoice_div.style.display = "none";
+  userChoice_div.style.display = "none";
 
-  document.getElementById("overlay").style.display = "none";
+  overlay.style.display = "none";
 };
 
 compHitPointsUpdate = () => {
   let score = compScore;
   compHitPoints--;
   compHitpoints_div.innerHTML = compHitPoints;
-  document.getElementById("face").src = "assets/images/rsp-face-hit.png";
+  userFace_img.src = "assets/images/rsp-face-hit.png";
   setTimeout(() => {
-    document.getElementById("face").src = "assets/images/faceBeard.png";
+    userFace_img.src = "assets/images/faceBeard.png";
   }, 400);
   if (compHitPoints === 0 && score < userScore) {
     winner();
@@ -131,9 +168,9 @@ hitPointsUpdater = () => {
   let score = userScore;
   hitPoints--;
   userHitpoints_div.innerHTML = hitPoints;
-  document.getElementById("face").src = "assets/images/rsp-face-hit.png";
+  userFace_img.src = "assets/images/rsp-face-hit.png";
   setTimeout(() => {
-    document.getElementById("face").src = "assets/images/faceBeard.png";
+    userFace_img.src = "assets/images/faceBeard.png";
   }, 400);
   if (hitPoints === 0 && score < compScore) {
     loses();
@@ -171,23 +208,17 @@ main = () => {
 
   rock_div.addEventListener("click", () => {
     game("r");
-    image = document.getElementById("userChoiceImg");
-    image.src = "assets/images/srock-attack.png";
-    document.getElementById("userChoice").style.display = "block";
+    imageMap("ROCK");
   });
 
   paper_div.addEventListener("click", () => {
     game("p");
-    image = document.getElementById("userChoiceImg");
-    image.src = "assets/images/spaper-attack.png";
-    document.getElementById("userChoice").style.display = "block";
+    imageMap("PAPER");
   });
 
   scissors_div.addEventListener("click", () => {
     game("s");
-    image = document.getElementById("userChoiceImg");
-    image.src = "assets/images/scissors.png";
-    document.getElementById("userChoice").style.display = "block";
+    imageMap("SCISSORS");
   });
 };
 
