@@ -43,9 +43,10 @@ let userFaceImg = imgMapper.FACEFULL;
 getUserFaceImage = (hitPoints) => {
   if (hitPoints > 7) {
     return imgMapper.FACEFULL;
-  } else if (hitPoints <= 7 ) {
+  } else if (hitPoints <= 7 && hitPoints > 4) {
     return imgMapper.FACEMED;
-  } else if (hitPoints <= 3) {
+  } else if (hitPoints <= 4) {
+    console.log('theres the face ',imgMapper.FACELOW);
     return imgMapper.FACELOW;
   }
 }
@@ -156,6 +157,7 @@ off = () => {
   userScore_span.innerHTML = userScore;
   userHitpoints_div.innerHTML = hitPoints;
   compHitpoints_div.innerHTML = compHitPoints;
+  userFace_img.src = getUserFaceImage(hitPoints);
   result_div.innerHTML = "Make your move";
   compChoice_div.style.display = "none";
   userChoice_div.style.display = "none";
