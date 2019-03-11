@@ -74,7 +74,6 @@ scoreCounter = (score, scoreSpan, winner) => {
   } else {
     compScore++;
     compScore_span.innerHTML = compScore;
-    console.log(scoreSpan, " does note equal user-score");
   }
 };
 

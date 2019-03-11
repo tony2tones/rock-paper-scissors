@@ -256,12 +256,12 @@ header > h1 {
 /* Mobile Styles */
 @media handheld, screen and (max-width: 743px) {
   .user-face {
-    width: 50px;
+    width: 60px;
     height: auto;
     border-radius: 2px;
   }
   .comp-face {
-    width: 50px;
+    width: 60px;
     height: auto;
     border-radius: 2px;
   }
@@ -280,14 +280,14 @@ header > h1 {
   }
   #userChoice {
     display: none;
-    width: 50px;
+    width: 80px;
     height: auto;
   }
   #compChoice {
     transition: all 1.5s ease;
     transform: scaleX(-1);
     display: none;
-    width: 50px;
+    width: 80px;
     height: auto;
   }
   .choices {
@@ -295,6 +295,10 @@ header > h1 {
     text-align: center;
     border-bottom: 20px;
     height: 162px;
+  }
+  .rsp {
+    display: flex;
+    justify-content: unsafe;
   }
   .resize {
     width: 75px;
