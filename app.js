@@ -33,23 +33,22 @@ const imgMapper = {
   PAPER: "assets/images/spaper-attack.png",
   SCISSORS: "assets/images/scissors.png",
   FACEFULL: "assets/images/face-full.png",
-  FACEMED: 'assets/images/face-med.png',
-  FACELOW: 'assets/images/face-low.png',
+  FACEMED: "assets/images/face-med.png",
+  FACELOW: "assets/images/face-low.png",
   FACEHIT: "assets/images/rsp-face-hit.png"
 };
 
 let userFaceImg = imgMapper.FACEFULL;
 
-getUserFaceImage = (hitPoints) => {
+getUserFaceImage = hitPoints => {
   if (hitPoints > 7) {
     return imgMapper.FACEFULL;
   } else if (hitPoints <= 7 && hitPoints > 4) {
     return imgMapper.FACEMED;
   } else if (hitPoints <= 4) {
-    console.log('theres the face ',imgMapper.FACELOW);
     return imgMapper.FACELOW;
   }
-}
+};
 
 getComputerChoice = () => {
   const choices = ["r", "p", "s"];
@@ -127,7 +126,7 @@ lose = (userChoice, computerChoice) => {
   }, 800);
 };
 
-draw = userChoice => {
+draw = () => {
   result_div.innerHTML = "Its a draw. Try again.";
   userHand_div.classList.add("grey-glow");
   compHand_div.classList.add("grey-glow");
@@ -139,11 +138,14 @@ draw = userChoice => {
 
 // Overlay logic
 loses = () => {
+  userFace_img.src = getUserFaceImage(hitPoints);
   overlay_div.innerHTML = "YOU LOSE";
   overlay.style.display = "block";
 };
 
 winner = () => {
+  userFace_img.src = getUserFaceImage(hitPoints);
+  // userFace_img.src = getUserFaceImage(hitPoints);
   overlay_div.innerHTML = "YOU WIN!";
   overlay.style.display = "block";
 };
@@ -168,7 +170,7 @@ compHitPointsUpdate = () => {
   let score = compScore;
   compHitPoints--;
   compHitpoints_div.innerHTML = compHitPoints;
-  userFace_img.src = imgMapper.FACEHIT;
+  // userFace_img.src = imgMapper.FACEHIT;
   setTimeout(() => {
     userFace_img.src = getUserFaceImage(hitPoints);
   }, 400);
@@ -194,9 +196,7 @@ hitPointsUpdater = () => {
   }
 };
 
-faceState = 
-
-game = userChoice => {
+faceState = game = userChoice => {
   result_div.innerHTML = "Make your move";
   const computerChoice = getComputerChoice();
   setImage(computerChoice);
