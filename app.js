@@ -1,7 +1,7 @@
 let userScore = 0;
 let compScore = 0;
-let hitPoints = 2;
-let compHitPoints = 5;
+let hitPoints = 10;
+let compHitPoints = 10;
 
 const ROCK = "r";
 const PAPER = "p";
@@ -33,8 +33,22 @@ const imgMapper = {
   PAPER: "assets/images/spaper-attack.png",
   SCISSORS: "assets/images/scissors.png",
   FACEFULL: "assets/images/face-full.png",
+  FACEMED: 'assets/images/face-med.png',
+  FACELOW: 'assets/images/face-low.png',
   FACEHIT: "assets/images/rsp-face-hit.png"
 };
+
+let userFaceImg = imgMapper.FACEFULL;
+
+getUserFaceImage = (hitPoints) => {
+  if (hitPoints > 7) {
+    return imgMapper.FACEFULL;
+  } else if (hitPoints <= 7 ) {
+    return imgMapper.FACEMED;
+  } else if (hitPoints <= 3) {
+    return imgMapper.FACELOW;
+  }
+}
 
 getComputerChoice = () => {
   const choices = ["r", "p", "s"];
@@ -154,11 +168,11 @@ compHitPointsUpdate = () => {
   compHitpoints_div.innerHTML = compHitPoints;
   userFace_img.src = imgMapper.FACEHIT;
   setTimeout(() => {
-    userFace_img.src = imgMapper.FACEFULL;
+    userFace_img.src = getUserFaceImage(hitPoints);
   }, 400);
   if (compHitPoints === 0 && score < userScore) {
     winner();
-  } else if (score === 5 && score > userScore) {
+  } else if (score === 10 && score > userScore) {
     loses();
   }
 };
@@ -169,11 +183,11 @@ hitPointsUpdater = () => {
   userHitpoints_div.innerHTML = hitPoints;
   userFace_img.src = imgMapper.FACEHIT;
   setTimeout(() => {
-    userFace_img.src = imgMapper.FACEFULL;
+    userFace_img.src = getUserFaceImage(hitPoints);
   }, 400);
   if (hitPoints === 0 && score < compScore) {
     loses();
-  } else if (score === 5 && score > compScore) {
+  } else if (score === 10 && score > compScore) {
     winner();
   }
 };
