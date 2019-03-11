@@ -67,13 +67,24 @@ imageMap = imgChoice => {
   return imgMapper[imgChoice];
 };
 
-win = (userChoice, computerChoice) => {
-  userScore++;
+scoreCounter = (score, scoreSpan, winner) => {
+  if (winner === "user") {
+    userScore++;
+    scoreSpan.innerHTML = userScore;
+  } else {
+    compScore++;
+    compScore_span.innerHTML = compScore;
+    console.log(scoreSpan, " does note equal user-score");
+  }
+};
 
-  userScore_span.innerHTML = userScore;
+win = (userChoice, computerChoice) => {
+  scoreCounter(userScore, userScore_span, "user");
+
   result_div.innerHTML = `${convertToWord(userChoice)} beats ${convertToWord(
     computerChoice
   )} user wins!`;
+
   compHitPointsUpdate();
   userHand_div.classList.add("green-glow");
   compHand_div.classList.add("red-glow");
@@ -84,14 +95,13 @@ win = (userChoice, computerChoice) => {
 };
 
 lose = (userChoice, computerChoice) => {
-  // userChoice_div = document.getElementById(userChoice).classList;
-  compScore++;
-  compScore_span.innerHTML = compScore;
+  scoreCounter(compScore, compScore_span, "comp");
   result_div.innerHTML =
     convertToWord(computerChoice) +
     " beats " +
     convertToWord(userChoice) +
     " user loses!";
+
   hitPointsUpdater();
   userHand_div.classList.add("red-glow");
   compHand_div.classList.add("green-glow");
@@ -143,9 +153,9 @@ compHitPointsUpdate = () => {
   let score = compScore;
   compHitPoints--;
   compHitpoints_div.innerHTML = compHitPoints;
-  document.getElementById("face").src = "assets/images/rsp-face-hit.png";
+  userFace_img.src = "assets/images/rsp-face-hit.png";
   setTimeout(() => {
-    document.getElementById("face").src = "assets/images/faceBeard.png";
+    userFace_img.src = "assets/images/faceBeard.png";
   }, 400);
   if (compHitPoints === 0 && score < userScore) {
     winner();
