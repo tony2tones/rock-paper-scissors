@@ -19,11 +19,14 @@ const result_div = document.querySelector(".result > p");
 const rock_div = document.getElementById("r");
 const paper_div = document.getElementById("p");
 const scissors_div = document.getElementById("s");
-const userChoice_img = document.getElementById("user-choice"); 
+const userChoice_img = document.getElementById("user-choice");
 const overlay_div = document.querySelector(".result-lose > p");
 const compHand_div = document.getElementById("compChoiceImg");
 const userHand_div = document.getElementById("userChoiceImg");
 const userFace_img = document.getElementById("face");
+
+const compChoice_div = document.getElementById("compChoice");
+const userChoice_div = document.getElementById("userChoice");
 
 const imgMapper = {
   ROCK: "assets/images/srock-attack.png",
@@ -38,7 +41,7 @@ getComputerChoice = () => {
 };
 
 setImage = choice => {
-  document.getElementById("compChoice").style.display = "block";
+  compChoice_div.style.display = "block";
   switch (choice) {
     case "r":
       compHand_div.src = imgMapper.ROCK;
@@ -60,12 +63,11 @@ convertToWord = choice => {
 imageMap = imgChoice => {
   image = document.getElementById("userChoiceImg");
   image.src = imgMapper[imgChoice];
-  document.getElementById("userChoice").style.display = "block";
+  userChoice_div.style.display = "block";
   return imgMapper[imgChoice];
 };
 
 win = (userChoice, computerChoice) => {
-  userChoice_div = document.getElementById(userChoice).classList;
   userScore++;
 
   userScore_span.innerHTML = userScore;
@@ -73,14 +75,16 @@ win = (userChoice, computerChoice) => {
     computerChoice
   )} user wins!`;
   compHitPointsUpdate();
-  userChoice_div.add("green-glow");
+  userHand_div.classList.add("green-glow");
+  compHand_div.classList.add("red-glow");
   setTimeout(() => {
-    userChoice_div.remove("green-glow");
+    userHand_div.classList.remove("green-glow");
+    compHand_div.classList.remove("red-glow");
   }, 300);
 };
 
 lose = (userChoice, computerChoice) => {
-  userChoice_div = document.getElementById(userChoice).classList;
+  // userChoice_div = document.getElementById(userChoice).classList;
   compScore++;
   compScore_span.innerHTML = compScore;
   result_div.innerHTML =
@@ -89,18 +93,21 @@ lose = (userChoice, computerChoice) => {
     convertToWord(userChoice) +
     " user loses!";
   hitPointsUpdater();
-  userChoice_div.add("red-glow");
+  userHand_div.classList.add("red-glow");
+  compHand_div.classList.add("green-glow");
   setTimeout(() => {
-    userChoice_div.remove("red-glow");
+    userHand_div.classList.remove("red-glow");
+    compHand_div.classList.remove("green-glow");
   }, 800);
 };
 
 draw = userChoice => {
-  userChoice_div = document.getElementById(userChoice).classList;
-  result_div.innerHTML = "Its a draw, no winner. Try again.";
-  userChoice_div.add("grey-glow");
+  result_div.innerHTML = "Its a draw. Try again.";
+  userHand_div.classList.add("grey-glow");
+  compHand_div.classList.add("grey-glow");
   setTimeout(() => {
-    userChoice_div.remove("grey-glow");
+    userHand_div.classList.remove("grey-glow");
+    compHand_div.classList.remove("grey-glow");
   }, 800);
 };
 
@@ -126,8 +133,8 @@ off = () => {
   compHitpoints_div.innerHTML = compHitPoints;
   result_div.innerHTML = "Make your move";
 
-  document.getElementById("compChoice").style.display = "none";
-  document.getElementById("userChoice").style.display = "none";
+  compChoice_div.style.display = "none";
+  userChoice_div.style.display = "none";
 
   overlay.style.display = "none";
 };
