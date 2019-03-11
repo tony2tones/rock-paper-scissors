@@ -32,6 +32,7 @@ const imgMapper = {
   ROCK: "assets/images/srock-attack.png",
   PAPER: "assets/images/spaper-attack.png",
   SCISSORS: "assets/images/scissors.png",
+  FACEFULL: "assets/images/face-full.png",
   FACEHIT: "assets/images/rsp-face-hit.png"
 };
 
@@ -151,9 +152,9 @@ compHitPointsUpdate = () => {
   let score = compScore;
   compHitPoints--;
   compHitpoints_div.innerHTML = compHitPoints;
-  userFace_img.src = "assets/images/rsp-face-hit.png";
+  userFace_img.src = imgMapper.FACEHIT;
   setTimeout(() => {
-    userFace_img.src = "assets/images/faceBeard.png";
+    userFace_img.src = imgMapper.FACEFULL;
   }, 400);
   if (compHitPoints === 0 && score < userScore) {
     winner();
@@ -168,7 +169,7 @@ hitPointsUpdater = () => {
   userHitpoints_div.innerHTML = hitPoints;
   userFace_img.src = imgMapper.FACEHIT;
   setTimeout(() => {
-    userFace_img.src = "assets/images/faceBeard.png";
+    userFace_img.src = imgMapper.FACEFULL;
   }, 400);
   if (hitPoints === 0 && score < compScore) {
     loses();
@@ -176,6 +177,8 @@ hitPointsUpdater = () => {
     winner();
   }
 };
+
+faceState = 
 
 game = userChoice => {
   result_div.innerHTML = "Make your move";
