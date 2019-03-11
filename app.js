@@ -31,7 +31,8 @@ const userChoice_div = document.getElementById("userChoice");
 const imgMapper = {
   ROCK: "assets/images/srock-attack.png",
   PAPER: "assets/images/spaper-attack.png",
-  SCISSORS: "assets/images/scissors.png"
+  SCISSORS: "assets/images/scissors.png",
+  FACEHIT: "assets/images/rsp-face-hit.png"
 };
 
 getComputerChoice = () => {
@@ -141,10 +142,8 @@ off = () => {
   userHitpoints_div.innerHTML = hitPoints;
   compHitpoints_div.innerHTML = compHitPoints;
   result_div.innerHTML = "Make your move";
-
   compChoice_div.style.display = "none";
   userChoice_div.style.display = "none";
-
   overlay.style.display = "none";
 };
 
@@ -167,7 +166,7 @@ hitPointsUpdater = () => {
   let score = userScore;
   hitPoints--;
   userHitpoints_div.innerHTML = hitPoints;
-  userFace_img.src = "assets/images/rsp-face-hit.png";
+  userFace_img.src = imgMapper.FACEHIT;
   setTimeout(() => {
     userFace_img.src = "assets/images/faceBeard.png";
   }, 400);
