@@ -40,7 +40,7 @@ const imgMapper = {
 
 let userFaceImg = imgMapper.FACEFULL;
 
-getUserFaceImage = hitPoints => {
+const getUserFaceImage = hitPoints => {
   if (hitPoints > 7) {
     return imgMapper.FACEFULL;
   } else if (hitPoints <= 7 && hitPoints > 4) {
@@ -50,13 +50,13 @@ getUserFaceImage = hitPoints => {
   }
 };
 
-getComputerChoice = () => {
+const getComputerChoice = () => {
   const choices = ["r", "p", "s"];
   const randomNumber = Math.floor(Math.random() * 3);
   return choices[randomNumber];
 };
 
-setImage = choice => {
+const setImage = choice => {
   compChoice_div.style.display = "block";
   switch (choice) {
     case "r":
@@ -70,20 +70,20 @@ setImage = choice => {
   }
 };
 
-convertToWord = choice => {
+const convertToWord = choice => {
   if (choice === "p") return "PAPER";
   if (choice === "r") return "ROCK";
   else return "SCISSORS";
 };
 
-imageMap = imgChoice => {
+const imageMap = imgChoice => {
   image = document.getElementById("userChoiceImg");
   image.src = imgMapper[imgChoice];
   userChoice_div.style.display = "block";
   return imgMapper[imgChoice];
 };
 
-scoreCounter = (score, scoreSpan, winner) => {
+const scoreCounter = (score, scoreSpan, winner) => {
   if (winner === "user") {
     userScore++;
     scoreSpan.innerHTML = userScore;
@@ -93,7 +93,7 @@ scoreCounter = (score, scoreSpan, winner) => {
   }
 };
 
-win = (userChoice, computerChoice) => {
+const win = (userChoice, computerChoice) => {
   scoreCounter(userScore, userScore_span, "user");
 
   result_div.innerHTML = `${convertToWord(userChoice)} beats ${convertToWord(
@@ -109,7 +109,7 @@ win = (userChoice, computerChoice) => {
   }, 300);
 };
 
-lose = (userChoice, computerChoice) => {
+const lose = (userChoice, computerChoice) => {
   scoreCounter(compScore, compScore_span, "comp");
   result_div.innerHTML =
     convertToWord(computerChoice) +
@@ -126,7 +126,7 @@ lose = (userChoice, computerChoice) => {
   }, 800);
 };
 
-draw = () => {
+const draw = () => {
   result_div.innerHTML = "Its a draw. Try again.";
   userHand_div.classList.add("grey-glow");
   compHand_div.classList.add("grey-glow");
@@ -137,20 +137,20 @@ draw = () => {
 };
 
 // Overlay logic
-loses = () => {
+const loses = () => {
   userFace_img.src = getUserFaceImage(hitPoints);
   overlay_div.innerHTML = "YOU LOSE";
   overlay.style.display = "block";
 };
 
-winner = () => {
+const winner = () => {
   userFace_img.src = getUserFaceImage(hitPoints);
   // userFace_img.src = getUserFaceImage(hitPoints);
   overlay_div.innerHTML = "YOU WIN!";
   overlay.style.display = "block";
 };
 
-off = () => {
+const off = () => {
   hitPoints = 10;
   compHitPoints = 10;
   userScore = 0;
@@ -166,7 +166,7 @@ off = () => {
   overlay.style.display = "none";
 };
 
-compHitPointsUpdate = () => {
+const compHitPointsUpdate = () => {
   let score = compScore;
   compHitPoints--;
   compHitpoints_div.innerHTML = compHitPoints;
@@ -181,7 +181,7 @@ compHitPointsUpdate = () => {
   }
 };
 
-hitPointsUpdater = () => {
+const hitPointsUpdater = () => {
   let score = userScore;
   hitPoints--;
   userHitpoints_div.innerHTML = hitPoints;
@@ -196,7 +196,7 @@ hitPointsUpdater = () => {
   }
 };
 
-faceState = game = userChoice => {
+const faceState = game = userChoice => {
   result_div.innerHTML = "Make your move";
   const computerChoice = getComputerChoice();
   setImage(computerChoice);
@@ -218,7 +218,7 @@ faceState = game = userChoice => {
   }
 };
 
-main = () => {
+const main = () => {
   retry_button.addEventListener("click", () => {
     off();
   });
